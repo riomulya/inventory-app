@@ -21,3 +21,7 @@ Route::get('/', function () {
 Route::get('/dashboard', function () {
     return view('pages/dashboard');
 });
+
+Route::get('/customer', function () {
+    return view('pages/customer');
+});

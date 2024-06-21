@@ -1,7 +1,7 @@
 @extends('layout.main')
 
 @section('content')
-    <main>
+    <div class="overflow-hidden">
         <div class="px-4 sm:px-6 lg:px-8 py-8 w-full mx-auto">
             <div class="relative -z-50 bg-indigo-200 dark:bg-indigo-500 p-4 sm:p-6 rounded-sm overflow-hidden mb-8">
                 <div class="absolute right-0 top-0 -mt-4 mr-16 pointer-events-none hidden xl:block" aria-hidden="true"><svg
@@ -45,72 +45,13 @@
                     </svg></div>
                 <div class="relative">
                     <h1 class="text-2xl md:text-3xl text-slate-800 dark:text-slate-100 font-bold mb-1">Good afternoon, USERS
-                        Inc. 👋</h1>
+                        👋</h1>
                 </div>
             </div>
             <div class="grid grid-cols-12 gap-6">
 
 
-                <div
-                    class="flex flex-col col-span-full sm:col-span-6 bg-white dark:bg-slate-800 shadow-lg rounded-sm border border-slate-200 dark:border-slate-700">
-                    <header class="px-5 py-4 border-b border-slate-100 dark:border-slate-700 flex items-center">
-                        <h2 class="font-semibold text-slate-800 dark:text-slate-100">Sales Over Time (all stores)</h2>
-                    </header>
-                    <div class="px-5 py-3">
-                        <div class="flex flex-wrap justify-between items-end">
-                            <div class="flex items-start">
-                                <div class="text-3xl font-bold text-slate-800 dark:text-slate-100 mr-2">$1,482</div>
-                                <div class="text-sm font-semibold text-white px-1.5 bg-amber-500 rounded-full">-22%</div>
-                            </div>
-                            <div class="grow ml-2 mb-1">
-                                <ul class="flex flex-wrap justify-end">
-                                    <li style="margin-left: 0.75rem;"><button
-                                            style="display: inline-flex; align-items: center;"><span
-                                                style="display: block; width: 0.75rem; height: 0.75rem; border-radius: 9999px; margin-right: 0.5rem; border-width: 3px; border-color: rgb(99, 102, 241); pointer-events: none;"></span><span
-                                                class="text-slate-500 dark:text-slate-400"
-                                                style="font-size: 0.875rem; line-height: 1.25rem;">Current</span></button>
-                                    </li>
-                                    <li style="margin-left: 0.75rem;"><button
-                                            style="display: inline-flex; align-items: center;"><span
-                                                style="display: block; width: 0.75rem; height: 0.75rem; border-radius: 9999px; margin-right: 0.5rem; border-width: 3px; border-color: rgb(96, 165, 250); pointer-events: none;"></span><span
-                                                class="text-slate-500 dark:text-slate-400"
-                                                style="font-size: 0.875rem; line-height: 1.25rem;">Previous</span></button>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="grow"><canvas width="832" height="608"
-                            style="display: block; box-sizing: border-box; height: 304px; width: 416px;"></canvas></div>
-                </div>
-                <div
-                    class="flex flex-col col-span-full sm:col-span-6 bg-white dark:bg-slate-800 shadow-lg rounded-sm border border-slate-200 dark:border-slate-700">
-                    <header class="px-5 py-4 border-b border-slate-100 dark:border-slate-700 flex items-center">
-                        <h2 class="font-semibold text-slate-800 dark:text-slate-100">Sales VS Refunds</h2>
-                        <div class="relative ml-2"><button class="block" aria-haspopup="true" aria-expanded="false"><svg
-                                    class="w-4 h-4 fill-current text-slate-400 dark:text-slate-500" viewBox="0 0 16 16">
-                                    <path
-                                        d="M8 0C3.6 0 0 3.6 0 8s3.6 8 8 8 8-3.6 8-8-3.6-8-8-8zm0 12c-.6 0-1-.4-1-1s.4-1 1-1 1 .4 1 1-.4 1-1 1zm1-3H7V4h2v5z">
-                                    </path>
-                                </svg></button>
-                            <div class="z-10 absolute bottom-full left-1/2 -translate-x-1/2">
-                                <div class="rounded border overflow-hidden shadow-lg min-w-72 p-3 text-slate-600 bg-white dark:bg-slate-700 dark:text-slate-100 border-slate-200 dark:border-slate-600 mb-2"
-                                    style="display: none;">
-                                    <div class="text-sm">Sint occaecat cupidatat non proident, sunt in culpa qui officia
-                                        deserunt mollit.</div>
-                                </div>
-                            </div>
-                        </div>
-                    </header>
-                    <div class="px-5 py-3">
-                        <div class="flex items-start">
-                            <div class="text-3xl font-bold text-slate-800 dark:text-slate-100 mr-2">+$6,796</div>
-                            <div class="text-sm font-semibold text-white px-1.5 bg-amber-500 rounded-full">-34%</div>
-                        </div>
-                    </div>
-                    <div class="grow"><canvas width="832" height="608"
-                            style="display: block; box-sizing: border-box; height: 304px; width: 416px;"></canvas></div>
-                </div>
+
                 <div
                     class="col-span-full xl:col-span-6 bg-white dark:bg-slate-800 shadow-lg rounded-sm border border-slate-200 dark:border-slate-700">
                     <header class="px-5 py-4 border-b border-slate-100 dark:border-slate-700">
@@ -151,7 +92,7 @@
                                             <div class="text-left">alexshatov@gmail.com</div>
                                         </td>
                                         <td class="p-2 whitespace-nowrap">
-                                            <div class="text-left font-medium text-green-500">$2,890.66</div>
+                                            <div class="text-left font-medium text-green-500">RP 2.890.066</div>
                                         </td>
                                         <td class="p-2 whitespace-nowrap">
                                             <div class="text-lg text-center">🇺🇸</div>
@@ -171,7 +112,7 @@
                                             <div class="text-left">philip.h@gmail.com</div>
                                         </td>
                                         <td class="p-2 whitespace-nowrap">
-                                            <div class="text-left font-medium text-green-500">$2,767.04</div>
+                                            <div class="text-left font-medium text-green-500">RP 2.767.004</div>
                                         </td>
                                         <td class="p-2 whitespace-nowrap">
                                             <div class="text-lg text-center">🇩🇪</div>
@@ -191,7 +132,7 @@
                                             <div class="text-left">mirkofisuk@gmail.com</div>
                                         </td>
                                         <td class="p-2 whitespace-nowrap">
-                                            <div class="text-left font-medium text-green-500">$2,996.00</div>
+                                            <div class="text-left font-medium text-green-500">RP 2.996.000</div>
                                         </td>
                                         <td class="p-2 whitespace-nowrap">
                                             <div class="text-lg text-center">🇫🇷</div>
@@ -211,7 +152,7 @@
                                             <div class="text-left">olga.s@cool.design</div>
                                         </td>
                                         <td class="p-2 whitespace-nowrap">
-                                            <div class="text-left font-medium text-green-500">$1,220.66</div>
+                                            <div class="text-left font-medium text-green-500">RP 1.220.066</div>
                                         </td>
                                         <td class="p-2 whitespace-nowrap">
                                             <div class="text-lg text-center">🇮🇹</div>
@@ -231,7 +172,7 @@
                                             <div class="text-left">longburak@gmail.com</div>
                                         </td>
                                         <td class="p-2 whitespace-nowrap">
-                                            <div class="text-left font-medium text-green-500">$1,890.66</div>
+                                            <div class="text-left font-medium text-green-500">RP 1.890.066</div>
                                         </td>
                                         <td class="p-2 whitespace-nowrap">
                                             <div class="text-lg text-center">🇬🇧</div>
@@ -473,7 +414,8 @@
                                                     class="font-medium text-slate-800 hover:text-slate-900 dark:text-slate-100 dark:hover:text-white"
                                                     href="#0">Qonto</a> billing</div>
                                             <div class="shrink-0 self-start ml-2"><span
-                                                    class="font-medium text-slate-800 dark:text-slate-100">-$49.88</span>
+                                                    class="font-medium text-slate-800 dark:text-slate-100">-RP.
+                                                    49.88</span>
                                             </div>
                                         </div>
                                     </div>
@@ -540,7 +482,8 @@
                                                     class="font-medium text-slate-800 hover:text-slate-900 dark:text-slate-100 dark:hover:text-white"
                                                     href="#0">App.com</a> Market Ltd 70 Wilson St London</div>
                                             <div class="shrink-0 self-start ml-2"><span
-                                                    class="font-medium text-slate-800 dark:text-slate-100 line-through">+$99.99</span>
+                                                    class="font-medium text-slate-800 dark:text-slate-100 line-through">+RP.
+                                                    99.99</span>
                                             </div>
                                         </div>
                                     </div>
@@ -556,7 +499,8 @@
                                                     class="font-medium text-slate-800 hover:text-slate-900 dark:text-slate-100 dark:hover:text-white"
                                                     href="#0">App.com</a> Market Ltd 70 Wilson St London</div>
                                             <div class="shrink-0 self-start ml-2"><span
-                                                    class="font-medium text-slate-800 dark:text-slate-100">-$49.88</span>
+                                                    class="font-medium text-slate-800 dark:text-slate-100">-RP.
+                                                    49.88</span>
                                             </div>
                                         </div>
                                     </div>
@@ -567,5 +511,5 @@
                 </div>
             </div>
         </div>
-    </main>
+    </div>
 @endsection
