@@ -17,7 +17,7 @@
                         </svg>
                     </label>
                 </div>
-                <div class="drawer-side">
+                <div class="drawer-side z-50">
                     <label for="my-drawer" aria-label="close sidebar" class="drawer-overlay w-auto"></label>
                     <ul class="menu p-4 w-80 min-h-full bg-base-200 text-base-content">
                         <!-- Sidebar content here -->
@@ -163,7 +163,6 @@
                                         </svg><span
                                             class="text-sm text-gray-50 font-medium ml-3 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">Supplier</span>
                                     </div>
-
                                 </div>
                             </a></li>
                         <li><a href="">
