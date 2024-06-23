@@ -44,7 +44,7 @@
                         </g>
                     </svg></div>
                 <div class="relative">
-                    <h1 class="text-2xl md:text-3xl text-slate-800 dark:text-slate-100 font-bold mb-1">Good afternoon, USERS
+                    <h1 class="text-2xl md:text-3xl  font-bold mb-1">Good afternoon, USERS
                         👋</h1>
                 </div>
             </div>

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="light">
+<html lang="en" data-theme="luxury">
 
 @extends('layout.head')
 

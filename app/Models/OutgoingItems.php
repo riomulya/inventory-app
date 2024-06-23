@@ -8,4 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class OutgoingItems extends Model
 {
     use HasFactory;
+
+
+    protected $table = 'OutgoingItems';
 }

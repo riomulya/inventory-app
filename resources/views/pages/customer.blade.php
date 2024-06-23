@@ -1,8 +1,16 @@
+@if (session('success'))
+    <x-alert type="success" :message="session('success')" />
+@endif
+
+@if (session('error'))
+    <x-alert type="error" :message="session('error')" />
+@endif
+
 @extends('layout.main')
 
 @section('content')
     <div class="overflow-x-auto m-10">
-        <div class="stats shadow mx-auto w-full px-10 mb-5 bg-black ">
+        <div class="stats shadow mx-auto w-full px-10 mb-5 bg-secondary ">
 
             <div class="stat">
                 <div class="stat-figure text-secondary">
@@ -45,128 +53,131 @@
             </div>
 
         </div>
-        <div class="-z-50">
-            <table class="table">
+        <label class="input input-bordered flex items-center gap-2 mb-5">
+            <input type="text" class="grow" placeholder="Search" />
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="w-4 h-4 opacity-70">
+                <path fill-rule="evenodd"
+                    d="M9.965 11.026a5 5 0 1 1 1.06-1.06l2.755 2.754a.75.75 0 1 1-1.06 1.06l-2.755-2.754ZM10.5 7a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0Z"
+                    clip-rule="evenodd" />
+            </svg>
+        </label>
+        <button class="btn btn-outline mb-5 w-full" onclick="insertModal.showModal()">Tambah Data</button>
+        <div class="-z-50 w-full mx-auto">
+            <table class="table table-zebra">
                 <!-- head -->
                 <thead>
                     <tr>
-                        <th>Name</th>
-                        <th>Job</th>
-                        <th>Phone</th>
-                        <th>Action</th>
+                        <th>Nama</th>
+                        <th>Alamat / Email</th>
+                        <th>Nomor Telepon</th>
+                        <th class="text-center">Action</th>
                     </tr>
                 </thead>
                 <tbody>
                     <!-- row 1 -->
-                    <tr>
-                        <td>
-                            <div class="flex items-center gap-3">
-                                <div class="avatar">
-                                    <div class="mask mask-squircle w-12 h-12">
-                                        <img src="https://img.daisyui.com/tailwind-css-component-profile-2@56w.png"
-                                            alt="Avatar Tailwind CSS Component" />
+                    @foreach ($customers as $customer)
+                        <tr>
+                            <td>
+                                <div class="flex items-center gap-3">
+                                    <div>
+                                        <div class="font-bold">{{ $customer->Nama }}</div>
                                     </div>
                                 </div>
-                                <div>
-                                    <div class="font-bold">Hart Hagerty</div>
-                                    <div class="text-sm opacity-50">United States</div>
-                                </div>
-                            </div>
-                        </td>
-                        <td>
-                            Zemlak, Daniel and Leannon
-                            <br />
-                            <span class="badge badge-ghost badge-sm">Desktop Support Technician</span>
-                        </td>
-                        <td>+62231123123</td>
-                        <td>
-                            <button class="btn btn-outline btn-primary cursor-pointer">Edit</button>
-                            <button class="btn btn-outline btn-error cursor-pointer">Delete</button>
-                        </td>
-                    </tr>
-                    <!-- row 2 -->
-                    <tr>
-                        <td>
-                            <div class="flex items-center gap-3">
-                                <div class="avatar">
-                                    <div class="mask mask-squircle w-12 h-12">
-                                        <img src="https://img.daisyui.com/tailwind-css-component-profile-3@56w.png"
-                                            alt="Avatar Tailwind CSS Component" />
+                            </td>
+                            <td>
+                                {{ $customer->Alamat }}
+                                <br />
+                                <span class="badge badge-ghost badge-sm">{{ $customer->Email }}</span>
+                            </td>
+                            <td>+{{ $customer->NomorTelepon }}</td>
+                            <td class="text-center">
+                                <!-- Edit Button -->
+                                <button class="btn btn-outline btn-primary cursor-pointer"
+                                    onclick="editModal{{ $customer->CustomerID }}.showModal()">Edit</button>
+                                <!-- Edit Modal -->
+                                <dialog id="editModal{{ $customer->CustomerID }}" class="modal">
+                                    <div class="modal-box">
+                                        <form method="dialog" class="modal-backdrop">
+                                            <button
+                                                class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2 text-white">✕</button>
+                                        </form>
+                                        <form method="POST"
+                                            action="{{ route('customers.update', $customer->CustomerID) }}">
+                                            @csrf
+                                            @method('PUT')
+                                            <h3 class="font-bold text-lg">Update Data</h3>
+                                            <div class="mx-auto">
+                                                <input type="text" name="Nama" placeholder="Nama"
+                                                    class="input my-2 input-bordered w-full" value="{{ $customer->Nama }}"
+                                                    required />
+                                                <input type="text" name="Alamat" placeholder="Alamat"
+                                                    class="input my-2 input-bordered w-full" value="{{ $customer->Alamat }}"
+                                                    required />
+                                                <input type="text" name="NomorTelepon" placeholder="Nomor Telepon"
+                                                    class="input my-2 input-bordered w-full"
+                                                    value="{{ $customer->NomorTelepon }}" required minlength="12"
+                                                    maxlength="15" />
+                                                <input type="email" name="Email" placeholder="Email"
+                                                    class="input my-2 input-bordered w-full" value="{{ $customer->Email }}"
+                                                    required />
+                                            </div>
+                                            <button class="btn btn-secondary block my-2" type="submit">Submit</button>
+                                        </form>
                                     </div>
-                                </div>
-                                <div>
-                                    <div class="font-bold">Brice Swyre</div>
-                                    <div class="text-sm opacity-50">China</div>
-                                </div>
-                            </div>
-                        </td>
-                        <td>
-                            Carroll Group
-                            <br />
-                            <span class="badge badge-ghost badge-sm">Tax Accountant</span>
-                        </td>
-                        <td>+6224323424324</td>
-                        <th>
-                            <button class="btn btn-outline btn-primary cursor-pointer">Edit</button>
-                            <button class="btn btn-outline btn-error cursor-pointer">Delete</button>
-                        </th>
-                    </tr>
-                    <!-- row 3 -->
-                    <tr>
-                        <td>
-                            <div class="flex items-center gap-3">
-                                <div class="avatar">
-                                    <div class="mask mask-squircle w-12 h-12">
-                                        <img src="https://img.daisyui.com/tailwind-css-component-profile-4@56w.png"
-                                            alt="Avatar Tailwind CSS Component" />
+                                </dialog>
+                                <button class="btn btn-outline btn-error cursor-pointer"
+                                    onclick="{{ 'deleteModal' . $customer->CustomerID }}.showModal()">Delete</button>
+                                <dialog id="{{ 'deleteModal' . $customer->CustomerID }}" class="modal ">
+                                    <div class="modal-box">
+                                        <form method="dialog">
+                                            <button
+                                                class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
+                                        </form>
+                                        <h3 class="font-bold text-lg">Apakah Yakin Anda Ingin Menghapus
+                                            {{ $customer->Nama }}?
+                                        </h3>
+                                        <p class="py-4">Press ESC key or click outside to close</p>
+                                        <form action="{{ route('customers.destroy', $customer->CustomerID) }}"
+                                            method="post">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button class="btn btn-error" type="submit">Confirm</button>
+                                        </form>
                                     </div>
-                                </div>
-                                <div>
-                                    <div class="font-bold">Marjy Ferencz</div>
-                                    <div class="text-sm opacity-50">Russia</div>
-                                </div>
-                            </div>
-                        </td>
-                        <td>
-                            Rowe-Schoen
-                            <br />
-                            <span class="badge badge-ghost badge-sm">Office Assistant I</span>
-                        </td>
-                        <td>+622343243256</td>
-                        <th>
-                            <button class="btn btn-outline btn-primary cursor-pointer">Edit</button>
-                            <button class="btn btn-outline btn-error cursor-pointer">Delete</button>
-                        </th>
-                    </tr>
-                    <!-- row 4 -->
-                    <tr>
-                        <td>
-                            <div class="flex items-center gap-3">
-                                <div class="avatar">
-                                    <div class="mask mask-squircle w-12 h-12">
-                                        <img src="https://img.daisyui.com/tailwind-css-component-profile-5@56w.png"
-                                            alt="Avatar Tailwind CSS Component" />
-                                    </div>
-                                </div>
-                                <div>
-                                    <div class="font-bold">Yancy Tear</div>
-                                    <div class="text-sm opacity-50">Brazil</div>
-                                </div>
-                            </div>
-                        </td>
-                        <td>
-                            Wyman-Ledner
-                            <br />
-                            <span class="badge badge-ghost badge-sm">Community Outreach Specialist</span>
-                        </td>
-                        <td>+6298797898732</td>
-                        <th>
-                            <button class="btn btn-outline btn-primary cursor-pointer">Edit</button>
-                            <button class="btn btn-outline btn-error cursor-pointer">Delete</button>
-                        </th>
-                    </tr>
+                                    <form method="dialog" class="modal-backdrop">
+                                        <button>close</button>
+                                    </form>
+                                </dialog>
+                            </td>
+                        </tr>
+                    @endforeach
                 </tbody>
             </table>
         </div>
+        <dialog id="insertModal" class="modal">
+            <div class="modal-box">
+                <form method="dialog">
+                    <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
+                </form>
+                <h3 class="font-bold text-lg">Insert Data</h3>
+                <form method="POST" action="{{ route('customers.store') }}" class="my-2">
+                    @csrf
+                    <div class="mx-auto">
+                        <input type="text" name="Nama" placeholder="Nama" class="input my-2 input-bordered w-full"
+                            required />
+                        <input type="text" name="Alamat" placeholder="Alamat"
+                            class="input my-2 input-bordered w-full" required />
+                        <input type="text" name="NomorTelepon" placeholder="Nomor Telepon"
+                            class="input my-2 input-bordered w-full" required minlength="12" maxlength="15" />
+                        <input type="email" name="Email" placeholder="Email"
+                            class="input my-2 input-bordered w-full" required />
+                    </div>
+                    <button class="btn btn-secondary block my-2" type="submit">Submit</button>
+                </form>
+            </div>
+            <form method="dialog" class="modal-backdrop">
+                <button>close</button>
+            </form>
+        </dialog>
     </div>
 @endsection
