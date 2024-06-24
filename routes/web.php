@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CustomersController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\IncomingProductController;
 use App\Http\Controllers\ItemRequestsController;
 use App\Http\Controllers\OutgoingProductController;
@@ -34,9 +35,7 @@ Route::post('/', [LoginController::class, 'authenticate']);
 // Route::post('/logout', [AuthLoginController::class, 'logout'])->name('logout');
 
 Route::middleware('auth')->group(function () {
-    Route::get('/dashboard', function () {
-        return view('pages/dashboard');
-    });
+    Route::get('/dashboard', [DashboardController::class, 'index']);
 
     Route::post('/logout', [LoginController::class, 'logout']);
 
