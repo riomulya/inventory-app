@@ -2,9 +2,11 @@
 
 use App\Http\Controllers\CustomersController;
 use App\Http\Controllers\IncomingProductController;
+use App\Http\Controllers\ItemRequestsController;
 use App\Http\Controllers\OutgoingProductController;
 use App\Http\Controllers\ItemsController;
 use App\Http\Controllers\PurchaseTransactionsController;
+use App\Http\Controllers\SalesTransactionsController;
 use App\Http\Controllers\ScheduleProductController;
 use App\Http\Controllers\SuppliersController;
 use App\Models\Customers;
@@ -46,6 +48,14 @@ Route::put('/products/{id}', [ItemsController::class, 'update'])->name('items.up
 Route::delete('/products/{id}', [ItemsController::class, 'destroy'])->name('items.destroy');
 
 Route::get('/purchase-transaction', [PurchaseTransactionsController::class, 'index']);
+Route::post('/purchase-transaction', [PurchaseTransactionsController::class, 'store'])->name('purchase.store');
+Route::put('/purchase-transaction/{id}', [PurchaseTransactionsController::class, 'update'])->name('purchase.update');
+Route::delete('/purchase-transaction/{id}', [PurchaseTransactionsController::class, 'destroy'])->name('purchase.destroy');
+
+Route::get('/sales-transaction', [SalesTransactionsController::class, 'index']);
+Route::post('/sales-transaction', [SalesTransactionsController::class, 'store'])->name('sales.store');
+Route::put('/sales-transaction/{id}', [SalesTransactionsController::class, 'update'])->name('sales.update');
+Route::delete('/sales-transaction/{id}', [SalesTransactionsController::class, 'destroy'])->name('sales.destroy');
 
 Route::get('/supplier', [SuppliersController::class, 'index'])->name('suppliers.index');
 
@@ -68,3 +78,9 @@ Route::delete('/outgoing/{id}/delete', [OutgoingProductController::class, 'destr
 
 Route::get("/outgoing", [OutgoingProductController::class, 'index'])->name('outgoing.index');
 Route::delete('/outgoing/{incomming}', [OutgoingProductController::class, 'destroy'])->name('outgoing.destroy');
+
+Route::get('/product-request', [ItemRequestsController::class, 'index']);
+Route::post('/product-request', [ItemRequestsController::class, 'store'])->name('requests.store');
+Route::put('/product-request/{id}', [ItemRequestsController::class, 'update'])->name('requests.update');
+Route::delete('/product-request/{id}', [ItemRequestsController::class, 'destroy'])->name('requests.destroy');
+Route::post('/product-request/accept/{id}', [ItemRequestsController::class, 'accept'])->name('requests.accept');

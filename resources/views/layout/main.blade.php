@@ -181,7 +181,7 @@
                                     </div>
                                 </div>
                             </a></li>
-                        <li><a href="">
+                        <li><a href="/sales-transaction">
                                 <div class="flex items-center justify-between">
                                     <div class="flex items-center"><svg class="shrink-0 h-6 w-6" viewBox="0 0 24 24">
                                             <path class="fill-current text-indigo-700"

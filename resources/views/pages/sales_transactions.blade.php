@@ -70,31 +70,31 @@
                     <th>Transaksi ID</th>
                     <th>Tanggal</th>
                     <th>Total Harga</th>
-                    <th>Nama Supplier</th>
-                    <th>Alamat Supplier</th>
+                    <th>Nama customer</th>
+                    <th>Alamat customer</th>
                     <th class="text-center">Action</th>
                 </tr>
             </thead>
             <tbody>
-                @foreach ($pTransactions as $p)
+                @foreach ($sTransactions as $s)
                     <tr>
-                        <th>{{ $p->TransaksiID }}</th>
-                        <td>{{ $p->Tanggal }}</td>
-                        <td>RP {{ $p->TotalHarga }}</td>
-                        <td>{{ $p->supplier->Nama }}</td>
-                        <td>{{ $p->supplier->Alamat }}</td>
+                        <th>{{ $s->TransaksiID }}</th>
+                        <td>{{ $s->Tanggal }}</td>
+                        <td>RP {{ $s->TotalHarga }}</td>
+                        <td>{{ $s->customer->Nama }}</td>
+                        <td>{{ $s->customer->Alamat }}</td>
                         <td class="text-center">
                             <!-- Edit Button -->
                             <button class="btn btn-outline btn-primary cursor-pointer"
-                                onclick="editModal{{ $p->TransaksiID }}.showModal()">Edit</button>
+                                onclick="editModal{{ $s->TransaksiID }}.showModal()">Edit</button>
                             <!-- Edit Modal -->
-                            <dialog id="editModal{{ $p->TransaksiID }}" class="modal">
+                            <dialog id="editModal{{ $s->TransaksiID }}" class="modal">
                                 <div class="modal-box">
                                     <form method="dialog" class="modal-backdrop">
                                         <button
                                             class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2 text-white">✕</button>
                                     </form>
-                                    <form method="POST" action="{{ route('purchase.update', $p->TransaksiID) }}">
+                                    <form method="POST" action="{{ route('sales.update', $s->TransaksiID) }}">
                                         @csrf
                                         @method('PUT')
                                         <h3 class="font-bold text-lg">Update Data</h3>
@@ -104,22 +104,22 @@
                                             </div>
                                             <input type="number" minlength="1" name="TotalHarga"
                                                 placeholder="Harga Per Item" class="input my-2 input-bordered w-full"
-                                                value="{{ $p->TotalHarga }}" required />
+                                                value="{{ $s->TotalHarga }}" required />
 
                                             <div class="label ">
                                                 <span class="label-text">Tanggal</span>
                                             </div>
                                             <input type="date" name="Tanggal" placeholder="Total Harga"
                                                 class="input my-2 input-bordered w-full" required
-                                                value="{{ $p->Tanggal }}" />
+                                                value="{{ $s->Tanggal }}" />
 
-                                            <select name="SupplierID" class="select my-2 select-primary w-full" required>
-                                                <option value="{{ $p->SupplierID }}" selected>
-                                                    {{ $p->SupplierID . ' - ' . $p->supplier->Nama }}
+                                            <select name="CustomerID" class="select my-2 select-primary w-full" required>
+                                                <option value="{{ $s->CustomerID }}" selected>
+                                                    {{ $s->CustomerID . ' - ' . $s->customer->Nama }}
                                                 </option>
-                                                @foreach ($supplier as $s)
-                                                    <option value="{{ $s->SupplierID }}">
-                                                        {{ $s->SupplierID . ' - ' . $s->Nama }}
+                                                @foreach ($customer as $c)
+                                                    <option value="{{ $c->CustomerID }}">
+                                                        {{ $c->CustomerID . ' - ' . $c->Nama }}
                                                     </option>
                                                 @endforeach
                                             </select>
@@ -132,8 +132,8 @@
                             </dialog>
 
                             <button class="btn btn-outline btn-error cursor-pointer"
-                                onclick="{{ 'deleteModal' . $p->TransaksiID }}.showModal()">Delete</button>
-                            <dialog id="{{ 'deleteModal' . $p->TransaksiID }}" class="modal ">
+                                onclick="{{ 'deleteModal' . $s->TransaksiID }}.showModal()">Delete</button>
+                            <dialog id="{{ 'deleteModal' . $s->TransaksiID }}" class="modal ">
                                 <div class="modal-box">
                                     <form method="dialog">
                                         <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
@@ -141,7 +141,7 @@
                                     <h3 class="font-bold text-lg">Apakah Yakin Anda Ingin Menghapus
                                     </h3>
                                     <p class="py-4">Press ESC key or click outside to close</p>
-                                    <form action="{{ route('purchase.destroy', $p->TransaksiID) }}" method="post">
+                                    <form action="{{ route('sales.destroy', $s->TransaksiID) }}" method="post">
                                         @csrf
                                         @method('DELETE')
                                         <button class="btn btn-error" type="submit">Confirm</button>
@@ -161,18 +161,18 @@
                 <form method="dialog" class="modal-backdrop">
                     <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2 text-white">✕</button>
                 </form>
-                <form method="POST" action="{{ route('purchase.store') }}">
+                <form method="POST" action="{{ route('sales.store') }}">
                     @csrf
                     @method('POST')
                     <h3 class="font-bold text-lg">Insert Data</h3>
                     <div class="mx-auto">
-                        <select name="SupplierID" class="select my-2 select-primary w-full" required>
+                        <select name="CustomerID" class="select my-2 select-primary w-full" required>
                             <option disabled selected>
-                                Pilih Supplier
+                                Pilih Customer
                             </option>
-                            @foreach ($supplier as $s)
-                                <option value="{{ $s->SupplierID }}">
-                                    {{ $s->SupplierID . ' - ' . $s->Nama }}
+                            @foreach ($customer as $s)
+                                <option value="{{ $s->CustomerID }}">
+                                    {{ $s->CustomerID . ' - ' . $s->Nama }}
                                 </option>
                             @endforeach
                         </select>

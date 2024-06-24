@@ -109,7 +109,7 @@
                                                 value="{{ $item->JumlahStok }}" />
                                             <select name="SupplierID" class="select my-2 select-primary w-full" required>
                                                 <option value="{{ $item->SupplierID }}" selected>
-                                                    {{ $item->SupplierID . ' ' . $item->supplier->Nama }}
+                                                    {{ $item->SupplierID . ' ' . $item->Nama }}
                                                 </option>
                                                 @foreach ($suppliers as $s)
                                                     <option value="{{ $s->SupplierID }}">
@@ -118,7 +118,7 @@
                                             </select>
                                             <select name="KategoriID" class="select mb-2 select-primary w-full" required>
                                                 <option value="{{ $item->KategoriID }}" selected>
-                                                    {{ $item->KategoriID . ' ' . $item->category->NamaKategori }}
+                                                    {{ $item->KategoriID . ' ' . $item->NamaKategori }}
                                                 </option>
                                                 @foreach ($itemKategori as $i)
                                                     <option value="{{ $i->KategoriID }}">
