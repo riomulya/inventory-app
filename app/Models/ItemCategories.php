@@ -8,7 +8,18 @@ use Illuminate\Database\Eloquent\Model;
 class ItemCategories extends Model
 {
     use HasFactory;
+    protected $primaryKey = 'KategoriID';
 
+    protected $table = 'itemcategories';
 
-    protected $table = 'ItemCategories';
+    protected $fillable = [
+        'NamaKategori'
+    ];
+
+    public $timestamps = false;
+
+    public function items()
+    {
+        return $this->hasMany(Items::class, 'KategoriID', 'KategoriID');
+    }
 }

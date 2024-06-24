@@ -10,6 +10,7 @@ class Customers extends Model
     use HasFactory;
     protected $primaryKey = 'CustomerID';
 
+    protected $table = 'customers';
 
     protected $fillable = [
         'Nama', 'Alamat', 'NomorTelepon', 'Email'
@@ -17,5 +18,13 @@ class Customers extends Model
 
     public $timestamps = false;
 
-    protected $table = 'Customers';
+    public function itemRequests()
+    {
+        return $this->hasMany(ItemRequests::class, 'CustomerID', 'CustomerID');
+    }
+
+    public function salesTransactions()
+    {
+        return $this->hasMany(SalesTransactions::class, 'CustomerID', 'CustomerID');
+    }
 }

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="luxury">
+<html lang="en" class="dark" data-theme="luxury">
 
 @extends('layout.head')
 
@@ -109,7 +109,7 @@
                                 </div>
                             </a></li>
                         <div class="divider">Report</div>
-                        <li><a href="">
+                        <li><a href="/finance">
                                 <div class="flex items-center justify-between">
                                     <div class="flex items-center"><svg class="shrink-0 h-6 w-6" viewBox="0 0 24 24">
                                             <path class="fill-current text-indigo-400"
@@ -129,18 +129,29 @@
                             </a></li>
 
 
-                        <li><a href="">
+                        <li><a href="/incoming">
                                 <div class="flex items-center"><svg class="shrink-0 h-6 w-6" viewBox="0 0 24 24">
                                         <path class="fill-current text-accent" d="M1 3h22v20H1z"></path>
                                         <path class="fill-current text-indigo-400" d="M21 3h2v4H1V3h2V1h4v2h10V1h4v2Z">
                                         </path>
                                     </svg><span
-                                        class="text-sm  font-medium ml-3 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">Schedule
+                                        class="text-sm  font-medium ml-3 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">Incomming
                                         Product
                                     </span>
                                 </div>
                             </a></li>
-                        <li><a href="">
+                        <li><a href="/outgoing">
+                                <div class="flex items-center"><svg class="shrink-0 h-6 w-6" viewBox="0 0 24 24">
+                                        <path class="fill-current text-indigo-400 " d="M1 3h22v20H1z"></path>
+                                        <path class="fill-current text-secondary " d="M21 3h2v4H1V3h2V1h4v2h10V1h4v2Z">
+                                        </path>
+                                    </svg><span
+                                        class="text-sm  font-medium ml-3 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">Outgoing
+                                        Product
+                                    </span>
+                                </div>
+                            </a></li>
+                        <li><a href="/product-request">
                                 <div class="flex items-center justify-between">
                                     <div class="flex items-center"><svg class="shrink-0 h-6 w-6" viewBox="0 0 24 24">
                                             <path class="fill-current text-accent"

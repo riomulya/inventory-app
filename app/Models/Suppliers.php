@@ -22,4 +22,11 @@ class Suppliers extends Model
     {
         return $this->hasMany(PurchaseTransactions::class, 'SupplierID', "SupplierID");
     }
+
+    public function items()
+    {
+        return $this->hasMany(Items::class, 'SupplierID', 'SupplierID');
+    }
+
+    
 }

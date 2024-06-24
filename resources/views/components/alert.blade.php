@@ -1,3 +1,5 @@
+{{-- @extend('layout.head'); --}}
+
 <div id="toast" class="toast toast-top toast-end z-50">
     <div role="alert" class="alert alert-{{ $type }}">
         @if ($type == 'success')
@@ -14,7 +16,10 @@
         @endif
         <span>{{ $message }}</span>
     </div>
+
 </div>
+
+
 
 
 <script>
