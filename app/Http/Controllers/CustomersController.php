@@ -12,12 +12,20 @@ class CustomersController extends Controller
      *
      * @return \Illuminate\View\View
      */
-    public function index()
+    public function index(Request $request)
     {
-        $customers = Customers::all();
+        $customersQuery = Customers::query();
 
-        // dd($items);
-        return view('pages/customer', compact('customers'));
+        if ($search = $request->input('search')) {
+            $customersQuery->where('Nama', 'like', '%' . $search . '%')
+                ->orWhere('Alamat', 'like', '%' . $search . '%')
+                ->orWhere('NomorTelepon', 'like', '%' . $search . '%')
+                ->orWhere('Email', 'like', '%' . $search . '%');
+        }
+
+        $customers = $customersQuery->get();
+
+        return view('pages.customer', compact('customers'));
     }
 
 

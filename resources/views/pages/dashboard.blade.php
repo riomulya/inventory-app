@@ -44,14 +44,11 @@
                         </g>
                     </svg></div>
                 <div class="relative">
-                    <h1 class="text-2xl md:text-3xl  font-bold mb-1">Good afternoon, USERS
+                    <h1 class="text-2xl md:text-3xl  font-bold mb-1">Hallo, {{ Auth::user()->name }}
                         👋</h1>
                 </div>
             </div>
             <div class="grid grid-cols-12 gap-6">
-
-
-
                 <div
                     class="col-span-full xl:col-span-6 bg-white dark:bg-slate-800 shadow-lg rounded-sm border border-slate-200 dark:border-slate-700">
                     <header class="px-5 py-4 border-b border-slate-100 dark:border-slate-700">

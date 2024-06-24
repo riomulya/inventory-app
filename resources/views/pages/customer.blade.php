@@ -10,57 +10,21 @@
 
 @section('content')
     <div class="overflow-x-auto m-10">
-        <div class="stats shadow mx-auto w-full px-10 mb-5 bg-secondary ">
 
-            <div class="stat">
-                <div class="stat-figure text-secondary">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                        class="inline-block w-8 h-8 stroke-current">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+        <form action="/customer">
+            <div class="col-2 flex justify-between">
+                <label class="input col input-bordered flex items-center w-full me-6 gap-2 mb-5">
+                    <input type="text" class="grow" placeholder="Search" name="search" />
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor"
+                        class="w-4 h-4 opacity-70">
+                        <path fill-rule="evenodd"
+                            d="M9.965 11.026a5 5 0 1 1 1.06-1.06l2.755 2.754a.75.75 0 1 1-1.06 1.06l-2.755-2.754ZM10.5 7a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0Z"
+                            clip-rule="evenodd" />
                     </svg>
-                </div>
-                <div class="stat-title">Customers</div>
-                <div class="stat-value">31K</div>
-                <div class="stat-desc">Jan 1st - Feb 1st</div>
+                </label>
+                <button type="submit" class="btn btn-outline flex col">Search</button>
             </div>
-
-            <div class="stat">
-                <div class="stat-figure text-secondary">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                        class="inline-block w-8 h-8 stroke-current">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4">
-                        </path>
-                    </svg>
-                </div>
-                <div class="stat-title">New Users</div>
-                <div class="stat-value">4,200</div>
-                <div class="stat-desc">↗︎ 400 (22%)</div>
-            </div>
-
-            <div class="stat">
-                <div class="stat-figure text-secondary">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                        class="inline-block w-8 h-8 stroke-current">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4"></path>
-                    </svg>
-                </div>
-                <div class="stat-title">New Registers</div>
-                <div class="stat-value">1,200</div>
-                <div class="stat-desc">↘︎ 90 (14%)</div>
-            </div>
-
-        </div>
-        <label class="input input-bordered flex items-center gap-2 mb-5">
-            <input type="text" class="grow" placeholder="Search" />
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="w-4 h-4 opacity-70">
-                <path fill-rule="evenodd"
-                    d="M9.965 11.026a5 5 0 1 1 1.06-1.06l2.755 2.754a.75.75 0 1 1-1.06 1.06l-2.755-2.754ZM10.5 7a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0Z"
-                    clip-rule="evenodd" />
-            </svg>
-        </label>
+        </form>
         <button class="btn btn-outline mb-5 w-full" onclick="insertModal.showModal()">Tambah Data</button>
         <div class="-z-50 w-full mx-auto">
             <table class="table table-zebra">
@@ -165,8 +129,8 @@
                     <div class="mx-auto">
                         <input type="text" name="Nama" placeholder="Nama" class="input my-2 input-bordered w-full"
                             required />
-                        <input type="text" name="Alamat" placeholder="Alamat"
-                            class="input my-2 input-bordered w-full" required />
+                        <input type="text" name="Alamat" placeholder="Alamat" class="input my-2 input-bordered w-full"
+                            required />
                         <input type="text" name="NomorTelepon" placeholder="Nomor Telepon"
                             class="input my-2 input-bordered w-full" required minlength="12" maxlength="15" />
                         <input type="email" name="Email" placeholder="Email"

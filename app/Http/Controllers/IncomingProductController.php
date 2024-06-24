@@ -11,15 +11,36 @@ use Illuminate\Http\Request;
 
 class IncomingProductController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $incoming = IncomingItems::with('purchaseTransaction', 'salesTransaction', 'item')->get();
-        $outgoing = OutgoingItems::with('purchaseTransaction', 'salesTransaction', 'item')->get();
+        $incomingQuery = IncomingItems::with('purchaseTransaction.supplier', 'salesTransaction.customer', 'item');
+        // $outgoingQuery = OutgoingItems::with('purchaseTransaction.supplier', 'salesTransaction.customer', 'item');
+
+        if ($search = $request->input('search')) {
+            $incomingQuery->whereHas('item', function ($query) use ($search) {
+                $query->where('ItemID', 'like', '%' . $search . '%');
+            })->orWhereHas('purchaseTransaction.supplier', function ($query) use ($search) {
+                $query->where('TransaksiID', 'like', '%' . $search . '%');
+            })->orWhereHas('salesTransaction.customer', function ($query) use ($search) {
+                $query->where('SalesTransaksiID', 'like', '%' . $search . '%');
+            });
+
+            // $outgoingQuery->whereHas('item', function ($query) use ($search) {
+            //     $query->where('Nama', 'like', '%' . $search . '%');
+            // })->orWhereHas('purchaseTransaction.supplier', function ($query) use ($search) {
+            //     $query->where('Nama', 'like', '%' . $search . '%');
+            // })->orWhereHas('salesTransaction.customer', function ($query) use ($search) {
+            //     $query->where('Nama', 'like', '%' . $search . '%');
+            // });
+        }
+
+        $incoming = $incomingQuery->get();
+        // $outgoing = $outgoingQuery->get();
         $items = Items::all();
         $purchase = PurchaseTransactions::with('supplier')->get();
         $sales = SalesTransactions::with('customer')->get();
 
-        return view('pages.incoming_product', compact('outgoing', 'incoming', 'items', 'purchase', 'sales'));
+        return view('pages.incoming_product', compact('incoming', 'items', 'purchase', 'sales'));
     }
 
     public function store(Request $request)

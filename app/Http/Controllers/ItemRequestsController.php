@@ -13,12 +13,36 @@ class ItemRequestsController extends Controller
 {
     public function index()
     {
-        $itemRequests = ItemRequests::with('customer', 'item')->get();
+        // Start the query builder with the necessary relationships
+        $itemRequestsQuery = ItemRequests::with('customer', 'item');
+
+        // Apply search filter if there is a search query
+        if ($search = request('search')) {
+            $itemRequestsQuery->where(function ($query) use ($search) {
+                $query->where('CustomerID', 'like', '%' . $search . '%')
+                    ->orWhere('ItemID', 'like', '%' . $search . '%')
+                    ->orWhere('Jumlah', 'like', '%' . $search . '%')
+                    ->orWhere('Tanggal', 'like', '%' . $search . '%')
+                    // Filter by customer name
+                    ->orWhereHas('customer', function ($q) use ($search) {
+                        $q->where('Nama', 'like', '%' . $search . '%');
+                    })
+                    // Filter by item name
+                    ->orWhereHas('item', function ($q) use ($search) {
+                        $q->where('Nama', 'like', '%' . $search . '%');
+                    });
+            });
+        }
+
+        // Retrieve the filtered data
+        $itemRequests = $itemRequestsQuery->get();
+
+        // Retrieve all items and customers
         $items = Items::all();
         $customers = Customers::all();
 
-        // dd($pTransactions);
-        return view('pages/request_product', compact('items', 'customers', 'itemRequests'));
+        // Return the view with the data
+        return view('pages.request_product', compact('items', 'customers', 'itemRequests'));
     }
 
 

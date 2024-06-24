@@ -9,10 +9,19 @@ use Illuminate\Http\Request;
 
 class ItemsController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $items = Items::all();
-        $totalStok = Items::sum('JumlahStok');
+        $itemsQuery = Items::with('supplier', 'category');
+
+        if ($search = $request->input('search')) {
+            $itemsQuery->where('Nama', 'like', '%' . $search . '%')
+                ->orWhere('Deskripsi', 'like', '%' . $search . '%')
+                ->orWhere('Harga', 'like', '%' . $search . '%')
+                ->orWhere('JumlahStok', 'like', '%' . $search . '%');
+        }
+
+        $items = $itemsQuery->get();
+        $totalStok = $items->sum('JumlahStok');
         $suppliers = Suppliers::all();
         $itemKategori = ItemCategories::all();
 

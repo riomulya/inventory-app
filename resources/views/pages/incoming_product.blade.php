@@ -22,8 +22,8 @@
                             d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                     </svg>
                 </div>
-                <div class="stat-title">Products</div>
-                <div class="stat-desc">Jan 1st - Feb 1st</div>
+                <div class="stat-title">Incoming Products</div>
+                <div class="stat-value">{{ $incoming->count() }}</div>
             </div>
 
             <div class="stat">
@@ -35,9 +35,8 @@
                         </path>
                     </svg>
                 </div>
-                <div class="stat-title">New Users</div>
-                <div class="stat-value">4,200</div>
-                <div class="stat-desc">↗︎ 400 (22%)</div>
+                <div class="stat-title">Total Product</div>
+                <div class="stat-value">{{ $incoming->sum('Jumlah') }}</div>
             </div>
 
             <div class="stat">
@@ -48,20 +47,25 @@
                             d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4"></path>
                     </svg>
                 </div>
-                <div class="stat-title">New Registers</div>
-                <div class="stat-value">1,200</div>
-                <div class="stat-desc">↘︎ 90 (14%)</div>
+                <div class="stat-title">Total Price Product</div>
+                <div class="stat-value">RP {{ $incoming->sum('Jumlah') * $incoming->sum('HargaPerItem') }}</div>
             </div>
 
         </div>
-        <label class="input input-bordered flex items-center gap-2 mb-5">
-            <input type="text" class="grow" placeholder="Search" />
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="w-4 h-4 opacity-70">
-                <path fill-rule="evenodd"
-                    d="M9.965 11.026a5 5 0 1 1 1.06-1.06l2.755 2.754a.75.75 0 1 1-1.06 1.06l-2.755-2.754ZM10.5 7a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0Z"
-                    clip-rule="evenodd" />
-            </svg>
-        </label>
+        <form action="/incoming">
+            <div class="col-2 flex justify-between">
+                <label class="input col input-bordered flex items-center w-full me-6 gap-2 mb-5">
+                    <input type="text" class="grow" placeholder="Search" name="search" />
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor"
+                        class="w-4 h-4 opacity-70">
+                        <path fill-rule="evenodd"
+                            d="M9.965 11.026a5 5 0 1 1 1.06-1.06l2.755 2.754a.75.75 0 1 1-1.06 1.06l-2.755-2.754ZM10.5 7a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0Z"
+                            clip-rule="evenodd" />
+                    </svg>
+                </label>
+                <button type="submit" class="btn btn-outline flex col">Search</button>
+            </div>
+        </form>
         <button class="btn btn-outline mb-5 w-full " onclick="insertModal.showModal()">Tambah Data</button>
         <table class="table table-zebra">
             <!-- head -->

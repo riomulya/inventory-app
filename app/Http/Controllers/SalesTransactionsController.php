@@ -14,13 +14,32 @@ class SalesTransactionsController extends Controller
      *
      * @return \Illuminate\View\View
      */
-    public function index()
+    public function index(Request $request)
     {
-        $sTransactions = SalesTransactions::with('customer')->get();
+        // Start the query builder with the necessary relationships
+        $sTransactionsQuery = SalesTransactions::with('customer');
+
+        // Apply search filter if there is a search query
+        if ($request->has('search')) {
+            $search = $request->get('search');
+            $sTransactionsQuery->where(function ($query) use ($search) {
+                $query->where('Tanggal', 'like', '%' . $search . '%')
+                    ->orWhere('TotalHarga', 'like', '%' . $search . '%')
+                    ->orWhereHas('customer', function ($q) use ($search) {
+                        $q->where('Nama', 'like', '%' . $search . '%')
+                            ->orWhere('Alamat', 'like', '%' . $search . '%');
+                    });
+            });
+        }
+
+        // Retrieve the filtered data
+        $sTransactions = $sTransactionsQuery->get();
         $customer = Customers::all();
-        // dd($pTransactions);
-        return view('pages/sales_transactions', compact('sTransactions', 'customer'));
+
+        // Return the view with the data
+        return view('pages.sales_transactions', compact('sTransactions', 'customer'));
     }
+
 
 
     public function store(Request $request)
