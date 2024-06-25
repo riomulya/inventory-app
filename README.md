@@ -69,4 +69,6 @@ The Laravel framework is open-sourced software licensed under the [MIT license](
 
 ## Sebagai Tugas Pemograman WEB 2
 
-# ketik composer install dan npm install saat mau menjalankan
+# ketik composer install dan npm install untuk install dependencies
+
+# ketik php artisan serve dan npm run dev untuk menjalankan di localhost:8000
