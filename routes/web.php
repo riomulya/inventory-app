@@ -39,7 +39,7 @@ Route::middleware('auth')->group(function () {
 
     Route::post('/logout', [LoginController::class, 'logout']);
 
-    Route::middleware('role:admin', 'role:manager')->group(function () {
+    // Route::middleware(['role:admin', 'role:manager'])->group(function () {
         Route::get('/customer', [CustomersController::class, 'index'])->name('customers.index');
         Route::post('/customer', [CustomersController::class, 'store'])->name('customers.store');
 
@@ -91,37 +91,37 @@ Route::middleware('auth')->group(function () {
         Route::put('/product-request/{id}', [ItemRequestsController::class, 'update'])->name('requests.update');
         Route::delete('/product-request/{id}', [ItemRequestsController::class, 'destroy'])->name('requests.destroy');
         Route::post('/product-request/accept/{id}', [ItemRequestsController::class, 'accept'])->name('requests.accept');
-    });
+    // });
 
-    Route::middleware('role:staff')->group(function () {
-        Route::get('/customer', [CustomersController::class, 'index'])->name('customers.index');
-        Route::post('/customer', [CustomersController::class, 'store'])->name('customers.store');
+    // Route::middleware('role:staff')->group(function () {
+    //     Route::get('/customer', [CustomersController::class, 'index'])->name('customers.index');
+    //     Route::post('/customer', [CustomersController::class, 'store'])->name('customers.store');
 
-        Route::delete('/customers/{customer}', [CustomersController::class, 'destroy'])->name('customers.destroy');
+    //     Route::delete('/customers/{customer}', [CustomersController::class, 'destroy'])->name('customers.destroy');
 
-        Route::put('/customers/{id}', [CustomersController::class, 'update'])->name('customers.update');
+    //     Route::put('/customers/{id}', [CustomersController::class, 'update'])->name('customers.update');
 
-        Route::get('/product', [ItemsController::class, 'index'])->name('items.index');
+    //     Route::get('/product', [ItemsController::class, 'index'])->name('items.index');
 
-        Route::post('/product', [ItemsController::class, 'store'])->name('items.store');
+    //     Route::post('/product', [ItemsController::class, 'store'])->name('items.store');
 
-        Route::put('/products/{id}', [ItemsController::class, 'update'])->name('items.update');
+    //     Route::put('/products/{id}', [ItemsController::class, 'update'])->name('items.update');
 
-        Route::delete('/products/{id}', [ItemsController::class, 'destroy'])->name('items.destroy');
-        Route::get('/supplier', [SuppliersController::class, 'index'])->name('suppliers.index');
+    //     Route::delete('/products/{id}', [ItemsController::class, 'destroy'])->name('items.destroy');
+    //     Route::get('/supplier', [SuppliersController::class, 'index'])->name('suppliers.index');
 
-        Route::post('/supplier', [SuppliersController::class, 'store'])->name('suppliers.store');
+    //     Route::post('/supplier', [SuppliersController::class, 'store'])->name('suppliers.store');
 
-        Route::delete('/suppliers/{supplier}', [SuppliersController::class, 'destroy'])->name('suppliers.destroy');
+    //     Route::delete('/suppliers/{supplier}', [SuppliersController::class, 'destroy'])->name('suppliers.destroy');
 
-        Route::put('/suppliers/{id}', [SuppliersController::class, 'update'])->name('suppliers.update');
-    });
+    //     Route::put('/suppliers/{id}', [SuppliersController::class, 'update'])->name('suppliers.update');
+    // });
 
-    Route::middleware('role:user')->group(function () {
-        Route::get('/product-request', [ItemRequestsController::class, 'index']);
-        Route::post('/product-request', [ItemRequestsController::class, 'store'])->name('requests.store');
-        Route::put('/product-request/{id}', [ItemRequestsController::class, 'update'])->name('requests.update');
-        Route::delete('/product-request/{id}', [ItemRequestsController::class, 'destroy'])->name('requests.destroy');
-        Route::post('/product-request/accept/{id}', [ItemRequestsController::class, 'accept'])->name('requests.accept');
-    });
+    // Route::middleware('role:user')->group(function () {
+    //     Route::get('/product-request', [ItemRequestsController::class, 'index']);
+    //     Route::post('/product-request', [ItemRequestsController::class, 'store'])->name('requests.store');
+    //     Route::put('/product-request/{id}', [ItemRequestsController::class, 'update'])->name('requests.update');
+    //     Route::delete('/product-request/{id}', [ItemRequestsController::class, 'destroy'])->name('requests.destroy');
+    //     Route::post('/product-request/accept/{id}', [ItemRequestsController::class, 'accept'])->name('requests.accept');
+    // });
 });

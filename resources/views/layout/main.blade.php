@@ -52,10 +52,11 @@
                                         fill="url(#logo-b)"></path>
                                 </svg></a></div>
                         {{-- @if if(auth()->user()->hasRole(['admin'])) --}}
-                        @role(['admin', 'manager'])
+                        @if (auth()->user()->role == 'admin' || auth()->user()->role == 'manager')
                             <li><a href="/dashboard">
                                     <div class="flex items-center justify-between">
-                                        <div class="flex items-center"><svg class="shrink-0 h-6 w-6" viewBox="0 0 24 24">
+                                        <div class="flex items-center"><svg class="shrink-0 h-6 w-6"
+                                                viewBox="0 0 24 24">
                                                 <path class="fill-current text-indigo-500"
                                                     d="M12 0C5.383 0 0 5.383 0 12s5.383 12 12 12 12-5.383 12-12S18.617 0 12 0z">
                                                 </path>
@@ -73,13 +74,15 @@
                             <div class="divider">Master Data</div>
                             <li><a href="/product">
                                     <div class="flex items-center justify-between">
-                                        <div class="flex items-center"><svg class="shrink-0 h-6 w-6" viewBox="0 0 24 24">
+                                        <div class="flex items-center"><svg class="shrink-0 h-6 w-6"
+                                                viewBox="0 0 24 24">
                                                 <path class="fill-current text-indigo-400"
                                                     d="M13 15l11-7L11.504.136a1 1 0 00-1.019.007L0 7l13 8z"></path>
                                                 <path class="fill-current text-indigo-700"
                                                     d="M13 15L0 7v9c0 .355.189.685.496.864L13 24v-9z"></path>
                                                 <path class="fill-current text-accent"
-                                                    d="M13 15.047V24l10.573-7.181A.999.999 0 0024 16V8l-11 7.047z"></path>
+                                                    d="M13 15.047V24l10.573-7.181A.999.999 0 0024 16V8l-11 7.047z">
+                                                </path>
                                             </svg><span
                                                 class="text-sm  font-medium ml-3 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">Product</span>
                                         </div>
@@ -87,7 +90,8 @@
                                 </a></li>
                             <li><a href="/customer">
                                     <div class="flex items-center justify-between">
-                                        <div class="flex items-center"><svg class="shrink-0 h-6 w-6" viewBox="0 0 24 24">
+                                        <div class="flex items-center"><svg class="shrink-0 h-6 w-6"
+                                                viewBox="0 0 24 24">
                                                 <path class="fill-current text-accent"
                                                     d="M18.974 8H22a2 2 0 012 2v6h-2v5a1 1 0 01-1 1h-2a1 1 0 01-1-1v-5h-2v-6a2 2 0 012-2h.974zM20 7a2 2 0 11-.001-3.999A2 2 0 0120 7zM2.974 8H6a2 2 0 012 2v6H6v5a1 1 0 01-1 1H3a1 1 0 01-1-1v-5H0v-6a2 2 0 012-2h.974zM4 7a2 2 0 11-.001-3.999A2 2 0 014 7z">
                                                 </path>
@@ -113,7 +117,8 @@
                             <div class="divider">Transaction</div>
                             <li><a href="/finance">
                                     <div class="flex items-center justify-between">
-                                        <div class="flex items-center"><svg class="shrink-0 h-6 w-6" viewBox="0 0 24 24">
+                                        <div class="flex items-center"><svg class="shrink-0 h-6 w-6"
+                                                viewBox="0 0 24 24">
                                                 <path class="fill-current text-indigo-400"
                                                     d="M13 6.068a6.035 6.035 0 0 1 4.932 4.933H24c-.486-5.846-5.154-10.515-11-11v6.067Z">
                                                 </path>
@@ -132,7 +137,8 @@
                             <li><a href="/incoming">
                                     <div class="flex items-center"><svg class="shrink-0 h-6 w-6" viewBox="0 0 24 24">
                                             <path class="fill-current text-accent" d="M1 3h22v20H1z"></path>
-                                            <path class="fill-current text-indigo-400" d="M21 3h2v4H1V3h2V1h4v2h10V1h4v2Z">
+                                            <path class="fill-current text-indigo-400"
+                                                d="M21 3h2v4H1V3h2V1h4v2h10V1h4v2Z">
                                             </path>
                                         </svg><span
                                             class="text-sm  font-medium ml-3 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">Incomming
@@ -143,7 +149,8 @@
                             <li><a href="/outgoing">
                                     <div class="flex items-center"><svg class="shrink-0 h-6 w-6" viewBox="0 0 24 24">
                                             <path class="fill-current text-indigo-400 " d="M1 3h22v20H1z"></path>
-                                            <path class="fill-current text-secondary " d="M21 3h2v4H1V3h2V1h4v2h10V1h4v2Z">
+                                            <path class="fill-current text-secondary "
+                                                d="M21 3h2v4H1V3h2V1h4v2h10V1h4v2Z">
                                             </path>
                                         </svg><span
                                             class="text-sm  font-medium ml-3 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">Outgoing
@@ -153,7 +160,8 @@
                                 </a></li>
                             <li><a href="/product-request">
                                     <div class="flex items-center justify-between">
-                                        <div class="flex items-center"><svg class="shrink-0 h-6 w-6" viewBox="0 0 24 24">
+                                        <div class="flex items-center"><svg class="shrink-0 h-6 w-6"
+                                                viewBox="0 0 24 24">
                                                 <path class="fill-current text-accent"
                                                     d="M19 5h1v14h-2V7.414L5.707 19.707 5 19H4V5h2v11.586L18.293 4.293 19 5Z">
                                                 </path>
@@ -168,8 +176,10 @@
                                 </a></li>
                             <li><a href="/purchase-transaction">
                                     <div class="flex items-center justify-between">
-                                        <div class="flex items-center"><svg class="shrink-0 h-6 w-6" viewBox="0 0 24 24">
-                                                <path class="fill-current text-accent" d="M8 1v2H3v19h18V3h-5V1h7v23H1V1z">
+                                        <div class="flex items-center"><svg class="shrink-0 h-6 w-6"
+                                                viewBox="0 0 24 24">
+                                                <path class="fill-current text-accent"
+                                                    d="M8 1v2H3v19h18V3h-5V1h7v23H1V1z">
                                                 </path>
                                                 <path class="fill-current text-accent" d="M1 1h22v23H1z"></path>
                                                 <path class="fill-current text-indigo-400"
@@ -183,7 +193,8 @@
                                 </a></li>
                             <li><a href="/sales-transaction">
                                     <div class="flex items-center justify-between">
-                                        <div class="flex items-center"><svg class="shrink-0 h-6 w-6" viewBox="0 0 24 24">
+                                        <div class="flex items-center"><svg class="shrink-0 h-6 w-6"
+                                                viewBox="0 0 24 24">
                                                 <path class="fill-current text-indigo-700"
                                                     d="M4.418 19.612A9.092 9.092 0 0 1 2.59 17.03L.475 19.14c-.848.85-.536 2.395.743 3.673a4.413 4.413 0 0 0 1.677 1.082c.253.086.519.131.787.135.45.011.886-.16 1.208-.474L7 21.44a8.962 8.962 0 0 1-2.582-1.828Z">
                                                 </path>
@@ -198,7 +209,7 @@
                                                 Transactions</span></div>
                                     </div>
                                 </a></li>
-                        @endrole
+                        @endif
                         {{-- <li><a href="">
                                 <div class="flex items-center"><svg class="shrink-0 h-6 w-6" viewBox="0 0 24 24">
                                         <path class="fill-current text-accent"
@@ -231,10 +242,11 @@
                                     </div>
                                 </div>
                             </a></li> --}}
-                        @role(['staff'])
+                        @if (auth()->user()->role == 'staff')
                             <li><a href="/dashboard">
                                     <div class="flex items-center justify-between">
-                                        <div class="flex items-center"><svg class="shrink-0 h-6 w-6" viewBox="0 0 24 24">
+                                        <div class="flex items-center"><svg class="shrink-0 h-6 w-6"
+                                                viewBox="0 0 24 24">
                                                 <path class="fill-current text-indigo-500"
                                                     d="M12 0C5.383 0 0 5.383 0 12s5.383 12 12 12 12-5.383 12-12S18.617 0 12 0z">
                                                 </path>
@@ -252,13 +264,15 @@
                             <div class="divider">Master Data</div>
                             <li><a href="/product">
                                     <div class="flex items-center justify-between">
-                                        <div class="flex items-center"><svg class="shrink-0 h-6 w-6" viewBox="0 0 24 24">
+                                        <div class="flex items-center"><svg class="shrink-0 h-6 w-6"
+                                                viewBox="0 0 24 24">
                                                 <path class="fill-current text-indigo-400"
                                                     d="M13 15l11-7L11.504.136a1 1 0 00-1.019.007L0 7l13 8z"></path>
                                                 <path class="fill-current text-indigo-700"
                                                     d="M13 15L0 7v9c0 .355.189.685.496.864L13 24v-9z"></path>
                                                 <path class="fill-current text-accent"
-                                                    d="M13 15.047V24l10.573-7.181A.999.999 0 0024 16V8l-11 7.047z"></path>
+                                                    d="M13 15.047V24l10.573-7.181A.999.999 0 0024 16V8l-11 7.047z">
+                                                </path>
                                             </svg><span
                                                 class="text-sm  font-medium ml-3 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">Product</span>
                                         </div>
@@ -266,7 +280,8 @@
                                 </a></li>
                             <li><a href="/customer">
                                     <div class="flex items-center justify-between">
-                                        <div class="flex items-center"><svg class="shrink-0 h-6 w-6" viewBox="0 0 24 24">
+                                        <div class="flex items-center"><svg class="shrink-0 h-6 w-6"
+                                                viewBox="0 0 24 24">
                                                 <path class="fill-current text-accent"
                                                     d="M18.974 8H22a2 2 0 012 2v6h-2v5a1 1 0 01-1 1h-2a1 1 0 01-1-1v-5h-2v-6a2 2 0 012-2h.974zM20 7a2 2 0 11-.001-3.999A2 2 0 0120 7zM2.974 8H6a2 2 0 012 2v6H6v5a1 1 0 01-1 1H3a1 1 0 01-1-1v-5H0v-6a2 2 0 012-2h.974zM4 7a2 2 0 11-.001-3.999A2 2 0 014 7z">
                                                 </path>
@@ -289,11 +304,12 @@
                                             class="text-sm  font-medium ml-3 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">Supplier</span>
                                     </div>
                                 </a></li>
-                        @endrole
-                        @role(['user'])
+                        @endif
+                        @if (Auth::user()->role == 'user')
                             <li><a href="/dashboard">
                                     <div class="flex items-center justify-between">
-                                        <div class="flex items-center"><svg class="shrink-0 h-6 w-6" viewBox="0 0 24 24">
+                                        <div class="flex items-center"><svg class="shrink-0 h-6 w-6"
+                                                viewBox="0 0 24 24">
                                                 <path class="fill-current text-indigo-500"
                                                     d="M12 0C5.383 0 0 5.383 0 12s5.383 12 12 12 12-5.383 12-12S18.617 0 12 0z">
                                                 </path>
@@ -310,7 +326,8 @@
                                 </a></li>
                             <li><a href="/product-request">
                                     <div class="flex items-center justify-between">
-                                        <div class="flex items-center"><svg class="shrink-0 h-6 w-6" viewBox="0 0 24 24">
+                                        <div class="flex items-center"><svg class="shrink-0 h-6 w-6"
+                                                viewBox="0 0 24 24">
                                                 <path class="fill-current text-accent"
                                                     d="M19 5h1v14h-2V7.414L5.707 19.707 5 19H4V5h2v11.586L18.293 4.293 19 5Z">
                                                 </path>
@@ -323,7 +340,7 @@
                                         </div>
                                     </div>
                                 </a></li>
-                        @endrole
+                        @endif
                     </ul>
                 </div>
             </div>
