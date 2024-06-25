@@ -1,5 +1,3 @@
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
 @extends('layout.main')
 
 @section('content')
@@ -500,6 +498,7 @@
             </div>
         </div>
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>   
     <script>
         var ctx = document.getElementById('salesChart').getContext('2d');
         var myChart = new Chart(ctx, {
