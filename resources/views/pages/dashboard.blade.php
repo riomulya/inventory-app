@@ -1,7 +1,10 @@
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
 @extends('layout.main')
 
 @section('content')
     <div class="overflow-hidden">
+
         <div class="px-4 sm:px-6 lg:px-8 py-8 w-full mx-auto">
             <div class="relative -z-50 bg-indigo-200 dark:bg-indigo-500 p-4 sm:p-6 rounded-sm overflow-hidden mb-8">
                 <div class="absolute right-0 top-0 -mt-4 mr-16 pointer-events-none hidden xl:block" aria-hidden="true"><svg
@@ -50,7 +53,15 @@
             </div>
             <div class="grid grid-cols-12 gap-6">
                 <div
-                    class="col-span-full xl:col-span-6 bg-white dark:bg-slate-800 shadow-lg rounded-sm border border-slate-200 dark:border-slate-700">
+                    class="col-span-6 xl:col-span-6 bg-white dark:bg-slate-800 shadow-lg rounded-sm border border-slate-200 dark:border-slate-700">
+                    <canvas id="salesChart" width="800" height="400"></canvas>
+                </div>
+                <div
+                    class="col-span-6 xl:col-span-6 bg-white dark:bg-slate-800 shadow-lg rounded-sm border border-slate-200 dark:border-slate-700">
+                    <canvas id="purchaseChart" width="800" height="400"></canvas>
+                </div>
+                <div
+                    class="col-span-6 xl:col-span-6 bg-white dark:bg-slate-800 shadow-lg rounded-sm border border-slate-200 dark:border-slate-700">
                     <header class="px-5 py-4 border-b border-slate-100 dark:border-slate-700">
                         <h2 class="font-semibold text-slate-800 dark:text-slate-100">Customers</h2>
                     </header>
@@ -105,10 +116,11 @@
                     </div>
                 </div>
                 <div
-                    class="col-span-full xl:col-span-6 bg-white dark:bg-slate-800 shadow-lg rounded-sm border border-slate-200 dark:border-slate-700">
+                    class="col-span-6 xl:col-span-6 bg-white dark:bg-slate-800 shadow-lg rounded-sm border border-slate-200 dark:border-slate-700">
                     <header class="px-5 py-4 border-b border-slate-100 dark:border-slate-700">
                         <h2 class="font-semibold text-slate-800 dark:text-slate-100">Suplliers</h2>
                     </header>
+
                     <div class="p-3">
                         <div class="overflow-x-auto">
                             <table class="table-auto w-full">
@@ -488,4 +500,48 @@
             </div>
         </div>
     </div>
+    <script>
+        var ctx = document.getElementById('salesChart').getContext('2d');
+        var myChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: {!! json_encode($labels) !!},
+                datasets: [{
+                    label: 'Total Sales ',
+                    data: {!! json_encode($data) !!},
+                    backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                    borderColor: 'rgba(54, 162, 235, 1)',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+        var ctxPurchase = document.getElementById('purchaseChart').getContext('2d');
+        var myChart = new Chart(ctxPurchase, {
+            type: 'line',
+            data: {
+                labels: {!! json_encode($labelsPurchase) !!},
+                datasets: [{
+                    label: 'Total Purchase',
+                    data: {!! json_encode($dataPurchase) !!},
+                    backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                    borderColor: 'rgba(54, 162, 235, 1)',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+    </script>
 @endsection
